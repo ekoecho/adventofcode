@@ -10,7 +10,8 @@ import (
 
 func main() {
 
-	grid := [1000][1000]bool{}
+	//grid := [1000][1000]bool{}
+	newgrid := [1000][1000]int{}
 	count := 0
 
 	file, err := os.Open("input")
@@ -23,21 +24,19 @@ func main() {
 
 	for scanner.Scan() {
 		//log.Println(scanner.Text())
-		grid = parseCommand(scanner.Text(), grid)
+		newgrid = parseCommand(scanner.Text(), newgrid)
 	}
 
 	for x := 0; x < 1000; x++ {
 		for y := 0; y < 1000; y++ {
-			if grid[x][y] == true {
-				count++
-			}
+			count = count + newgrid[x][y]
 		}
 	}
 	log.Println(count)
 
 }
 
-func parseCommand(s string, g [1000][1000]bool) [1000][1000]bool {
+func parseCommand(s string, g [1000][1000]int) [1000][1000]int {
 
 	command := strings.Split(s, " ")
 	var startPair string
@@ -67,11 +66,13 @@ func parseCommand(s string, g [1000][1000]bool) [1000][1000]bool {
 	for x := startX; x <= endX; x++ {
 		for y := startY; y <= endY; y++ {
 			if action == "ON" {
-				g[x][y] = true
+				g[x][y] = g[x][y] + 1
 			} else if action == "OFF" {
-				g[x][y] = false
+				if g[x][y] > 0 {
+					g[x][y] = g[x][y] - 1
+				}
 			} else {
-				g[x][y] = !(g[x][y])
+				g[x][y] = g[x][y] + 2
 			}
 		}
 	}

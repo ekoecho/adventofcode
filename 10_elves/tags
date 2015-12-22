@@ -4,6 +4,5 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
-main	lights.go	/^func main() {$/;"	f
-main	lights.go	/^package main$/;"	p
-parseCommand	lights.go	/^func parseCommand(s string, g [1000][1000]int) [1000][1000]int {$/;"	f
+main	elves.go	/^func main() {$/;"	f
+main	elves.go	/^package main$/;"	p
